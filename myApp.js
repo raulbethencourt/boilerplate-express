@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const root = __dirname + '/views/index.html';
@@ -10,7 +11,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/json', (req, res) => {
-    res.json({ message: 'Hello json' });
+    let txt = 'Hello json';
+
+    if (process.env.MESSAGE_STYLE == 'uppercase') {
+        var json_txt = txt.toUpperCase();
+    }
+
+    res.json({ message: json_txt });
 });
 
 module.exports = app;
