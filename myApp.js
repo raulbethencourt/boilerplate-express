@@ -5,9 +5,10 @@ const root = __dirname + '/views/index.html';
 const assets = __dirname + '/public';
 
 app.use('/public', express.static(assets));
+
 app.use((req, res, next) => {
 	console.log(`${req.method} ${req.path} - ${req.ip}`);
-    next();
+	next();
 });
 
 app.get('/', (req, res) => {
