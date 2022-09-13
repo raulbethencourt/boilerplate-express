@@ -1,9 +1,12 @@
 const express = require('express');
 const app = express();
-const path = __dirname + '/views/index.html';
+const root = __dirname + '/views/index.html';
+const public = __dirname + '/public';
+
+app.use('/public', express.static(public));
 
 app.get('/', (req, res) => {
-    res.sendFile(path);
+    res.sendFile(root);
 });
 
 module.exports = app;
